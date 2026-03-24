@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanEdge</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logos.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+            <img src="logos.jpeg" alt="Logo" style="height: 40px; width: 80px; margin: 0 10px;">
+            <div style="display: flex;">
+                <span style="color: white;">Urban</span>
+                <span style="color: #007bff;">Edge</span>
+            </div>
+        </div>
+
+
+        <div class="nav-right">
+            <div class="bars-icon" onclick="toggleMenu()">☰</div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('shop')">Shop</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+
+                <li class="nav-item-btn">
+                    <div class="cart-btn" onclick="toggleCart()">
+                        <span class="cart-icon">🛒</span>
+                        (<span id="cart-count">0</span>)
+                    </div>
+                </li>
+                <li class="nav-item-btn">
+                    <button class="theme-btn" onclick="toggleTheme()" id="theme-icon">🌙</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="home" class="page">
+        <div class="hero-banner">
+            <h1>Upgrade Your Lifestyle</h1>
+            <button onclick="showPage('shop')">View Catalog</button><br><br>
+            <p>Premium Quality Products Delivered to Your<br> Doorstep.</p>
+        </div>
+
+        <section class="features">
+            <div class="feature-box">
+                <h3>🚚 Fast Delivery</h3>
+                <p>Quick and reliable shipping all over the country.</p>
+            </div>
+            <div class="feature-box">
+                <h3>💎 Premium Quality</h3>
+                <p>Top quality products with best prices.</p>
+            </div>
+            <div class="feature-box">
+                <h3>🔒 Secure Payment</h3>
+                <p>100% safe and secure payment system.</p>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <h2>Featured Products</h2>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <img src="watch.webp" class="fe-watch">
+                    <h4>Smart Watch</h4>
+                    <p>$120</p>
+                    <button onclick="showPage('shop')" class="fe-btn">Buy Now</button>
+                </div>
+                <div class="featured-card">
+                    <img src="headphn.webp" class="fe-head">
+                    <h4>Wireless Headphones</h4>
+                    <p>$80</p>
+                    <button onclick="showPage('shop')" class="fe-btn">Buy Now</button>
+                </div>
+                <div class="featured-card">
+                    <img src="shoes.jfif" class="fe-shoes">
+                    <h4>Premium Shoes</h4>
+                    <p>$95</p>
+                    <button onclick="showPage('shop')" class="fe-btn">Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Ready to Shop?</h2>
+            <p>Explore our latest collection now.</p>
+            <button onclick="showPage('shop')">Go to Shop</button>
+            <p class="address">📍 Karachi, Pakistan | 📧 support@urbanedge.com</p>
+        </section>
+    </div>
+
+    <div id="shop" class="page" style="display:none;">
+        <h2 class="title">Our Products</h2>
+
+        <div class="shop-tools">
+            <input type="text" id="myInput" onkeyup="searchFunction()"
+                placeholder="Search products (e.g. watch, headphone...)">
+
+            <div class="category-pills">
+                <button class="pill active" onclick="filterCategory('all')">All</button>
+                <button class="pill" onclick="filterCategory('watch')">Watches</button>
+                <button class="pill" onclick="filterCategory('headphone')">Audio</button>
+                <button class="pill" onclick="filterCategory('shoe')">Shoes</button>
+                <button class="pill" onclick="filterCategory('bag')">Bags</button>
+            </div>
+        </div>
+
+        <div class="product-grid" id="product-list">
+        </div>
+    </div>
+
+    <div id="contact" class="page" style="display:none;">
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Write your message..." rows="5"></textarea>
+                    <button onclick="alert('Thank you!')">Send Message</button>
+                </div>
+                <div class="contact-info">
+                    <h3>Our Information</h3>
+                    <p>📍 Karachi, Pakistan</p>
+                    <p>📧 support@urbanedge.com</p>
+                    <p>📞 +92 300 1234567</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="cart-sidebar" class="cart-panel">
+        <div class="cart-top">
+            <h4>Shopping Cart</h4>
+            <span class="close-cart" onclick="toggleCart()">✕</span>
+        </div>
+        <div id="cart-items" class="cart-content">
+            <p class="cart-empty">Your cart is empty</p>
+        </div>
+        <div class="cart-bottom">
+            <div class="cart-total">
+                <span>Subtotal</span>
+                <strong>$<span id="total-amount">0.00</span></strong>
+            </div>
+            <button class="cart-checkout">Proceed to Checkout</button>
+            <button class="cart-clear" onclick="clearCart()">Clear Cart</button>
+        </div>
+    </div>
+
+    <div id="overlay" onclick="toggleCart()"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
